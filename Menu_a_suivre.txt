@@ -23,3 +23,5 @@ Reporting
 	ventes
 	Achats
 	stocks par region
+
+	modification
