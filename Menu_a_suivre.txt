@@ -1,0 +1,25 @@
+GEstion des Stocks
+
+	Entrees en stock
+	verifications stocks
+
+Bilan
+	Bilan regionnal
+	Bilan global
+
+Ventes
+	Nouvel vente client
+	Controles ventes
+
+Achat
+	Nouvel achat
+	Liste fournisseur
+
+Magasins
+	liste magasins
+	Stock magasin
+
+Reporting
+	ventes
+	Achats
+	stocks par region
