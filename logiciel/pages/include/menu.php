@@ -13,6 +13,7 @@
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Stocks</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li><a href="#">Entrées en stock</a></li>
+                <li><a href="#">Sortie stock</a></li>
                 <li><a href="#">Vérifications stock</a></li>
             </ul>
         </li>
