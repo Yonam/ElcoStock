@@ -12,9 +12,15 @@
         <li class="active">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Stocks</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li><a href="#">Entrées en stock</a></li>
-                <li><a href="#">Sortie stock</a></li>
-                <li><a href="#">Vérifications stock</a></li>
+                <li><a href="?page=stock_in">Entrées en stock</a></li>
+                <li><a href="?page=stock_out">Sortie stock</a></li>
+                <li>
+                    <a href="#verifSubmenu" data-toggle="collapse" aria-expanded="false">Vérifications stock</a>
+                    <ul class="collapse list-unstyled" id="verifSubmenu">
+                        <li><a href="?page=byRegion">Par region</a></li>
+                        <li><a href="?page=byStore">Par magasin</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li>
@@ -46,7 +52,7 @@
                 <li><a href="#">Evolution magasins</a></li>
             </ul>
 
-            <a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false">Achats</a>
+            <!-- <a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false">Achats</a>
             <ul class="collapse list-unstyled" id="pageSubmenu6">
                 <li><a href="#">Nouvel achat</a></li>
                 <li><a href="#">Fournisseurs</a></li>
@@ -56,7 +62,7 @@
             <ul class="collapse list-unstyled" id="pageSubmenu4">
                 <li><a href="#">Gestion magasins</a></li>
                 <li><a href="#">Gestion gérant</a></li>
-            </ul>
+            </ul> -->
         </li>
         <li>
             <a href="#">Contact</a>

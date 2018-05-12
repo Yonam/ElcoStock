@@ -2,7 +2,7 @@
 <?php 
 session_start();
  ob_start();
-  /*include("pages/include/connexionDB.php");*/
+  include("pages/include/connexionDB.php");
   require "pages/include/classes/class.auth.php";
   require "pages/include/classes/panier.class.php";
   require "pages/include/classes/encaissement.class.php";
