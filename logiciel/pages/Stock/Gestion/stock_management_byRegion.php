@@ -1,9 +1,9 @@
 <?php 
-/*global $bdd;
-$clients=$bdd->prepare('SELECT C.ID_CLIENT, LIBELLE_NIVEAU, NOM_CLIENT, PRENOM_CLIENT, TEL_CLIENT, ADRESSE_CLIENT, FRUITS FROM niveau N JOIN client C ON N.ID_NIVEAU = C.ID_NIVEAU LEFT JOIN preference P ON C.ID_CLIENT = P.ID_CLIENT');
-$clients->execute();
-$data=$clients->fetchAll();
-$four=array();*/
+global $bdd;
+
+$Region=$bdd->prepare('SELECT DISTINCT(REGION) FROM magasin');
+$Region->execute();
+$Region = $Region->fetchAll();
 
 
 
@@ -44,11 +44,26 @@ if (isset($_SERVER['HTTP_REFERER'])) {
                         </tr>
                     </thead>
                     <tbody>
-                       <!--  <?php
-                            /*foreach ($data as $d) {*/ ?> -->
+                       <?php
+                            foreach ($Region as $r) { 
+                                /*Recuperation du nombre de magasins de la region*/
+                                $nbre = $bdd->prepare("SELECT COUNT(ID_MAGASIN) AS NBRE FROM magasin WHERE REGION = :region");
+                                $nbre->execute(array('region'=>$r->REGION));
+
+                                $magasin = $bdd->prepare("SELECT M.ID_MAGASIN, S.ID_STOCK FROM magasin M JOIN stock S ON M.ID_MAGASIN = S.ID_MAGASIN WHERE M.REGION = :region");
+                                $magasin->execute(array('region'=>$r->REGION));
+
+                                foreach ($nbre as $n) {
+                                    $nombre = $n->NBRE;
+                                }
+
+                                /*Recuperation des elements du stocks*/
+
+                                ?> 
+                                
                                 <tr class="odd gradeA">
-                                    <td>Region 1</td>
-                                    <td>10</td>
+                                    <td><?= $r->REGION ?></td>
+                                    <td><?= $nombre ?></td>
                                     <td>20000 t</td>
                                     <td>40 000 t</td>
                                     <td>
@@ -56,8 +71,8 @@ if (isset($_SERVER['HTTP_REFERER'])) {
                                         
                                     </td>
                                 </tr>
-                        <!-- <?php  /* }*/
-                        ?> -->
+                        <?php   }
+                        ?> 
                         
                     </tbody>
                 </table>

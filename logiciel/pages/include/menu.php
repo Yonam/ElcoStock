@@ -25,7 +25,7 @@
         </li>
         <li>
             <a href="#">Gestion interne</a>
-            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">Ventes</a>
+            <!-- <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">Ventes</a>
             <ul class="collapse list-unstyled" id="pageSubmenu2">
                 <li><a href="#">Nouvelle vente client</a></li>
                 <li><a href="#">Suivi des ventes</a></li>
@@ -35,15 +35,15 @@
             <ul class="collapse list-unstyled" id="pageSubmenu3">
                 <li><a href="#">Nouvel achat</a></li>
                 <li><a href="#">Fournisseurs</a></li>
-            </ul>
+            </ul> -->
 
             <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false">Magasins</a>
             <ul class="collapse list-unstyled" id="pageSubmenu4">
-                <li><a href="#">Gestion magasins</a></li>
-                <li><a href="#">Gestion gérant</a></li>
+                <li><a href="?page=new_magasin">Gestion magasins</a></li>
+                <li><a href="?page=new_gerant">Gestion gérant</a></li>
             </ul>
         </li>
-        <li>
+        <!--<li>
             <a href="#">Etats</a>
             <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false">Graphique</a>
             <ul class="collapse list-unstyled" id="pageSubmenu5">
@@ -52,7 +52,7 @@
                 <li><a href="#">Evolution magasins</a></li>
             </ul>
 
-            <!-- <a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false">Achats</a>
+             <a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false">Achats</a>
             <ul class="collapse list-unstyled" id="pageSubmenu6">
                 <li><a href="#">Nouvel achat</a></li>
                 <li><a href="#">Fournisseurs</a></li>
@@ -62,8 +62,8 @@
             <ul class="collapse list-unstyled" id="pageSubmenu4">
                 <li><a href="#">Gestion magasins</a></li>
                 <li><a href="#">Gestion gérant</a></li>
-            </ul> -->
-        </li>
+            </ul> 
+        </li>-->
         <li>
             <a href="#">Contact</a>
         </li>
@@ -79,7 +79,7 @@
             <div class="navbar-header">
                 <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                     <i class="glyphicon glyphicon-align-left"></i>
-                    <span>Prixane | Hello</span>
+                    <span>Elco stock | Hello</span>
                 </button>
             </div>
 
