@@ -40,7 +40,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
                             <th>Nbre de magasins</th>
                             <th>Stock NPK</th>
                             <th>stock UREE</th>
-                            <th>Action</th>
+                            <!-- <th>Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -84,10 +84,10 @@ if (isset($_SERVER['HTTP_REFERER'])) {
                                     <td><?= $nombre ?></td>
                                     <td><?= $stock_npk ?></td>
                                     <td><?= $stock_uree ?></td>
-                                    <td>
-                                        <a class="btn btn-primary" href="#">Details</a>
+                                    <!-- <td>
+                                        <a class="btn btn-primary" href="?page=edit_client">Modifier</a>
                                         
-                                    </td>
+                                    </td> -->
                                 </tr>
                         <?php   }
                         ?> 

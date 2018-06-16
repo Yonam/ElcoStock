@@ -13,37 +13,28 @@
 
 		/*INSERTION DANS LA BASE*/
 
-		/*table magasin*/
+        /*table magasin*/
 		$req_magasin = $bdd->prepare("INSERT INTO magasin(ID_GERANT, REGION, DEPARTEMENT) VALUES(:gerant, :region, :departement)");
 		$req_magasin->execute(array('gerant' => $gerant,
 							'region' => $region,
 							'departement' => $magasin));
 		$lastId_magasin = (int)$bdd->lastInsertId();
+		
+		
+        $bdd->beginTransaction();
 
-		/*table stock*/
+			/*table stock*/
 
-		$req_stock = $bdd->prepare("INSERT INTO stock(ID_MAGASIN, DEPARTEMENT_STOCK) VALUES(:lastId , :magasin)");
-		$req_stock->execute(array('lastId' => $lastId_magasin,
-							'magasin' => $magasin));
-		$lastId_stock = (int)$bdd->lastInsertId();
+			$req_stock = $bdd->prepare("INSERT INTO stock(ID_MAGASIN, PRODUIT) VALUES(:lastId ,:produit)");
+			$req_stock->execute(array('lastId' => $lastId_magasin,
+									'produit' => "NKP15 15 15"));
+
+			$req_stock = $bdd->prepare("INSERT INTO stock(ID_MAGASIN, PRODUIT) VALUES(:lastId ,:produit)");
+			$req_stock->execute(array('lastId' => $lastId_magasin,
+									'produit' => "UREE 46%N"));
 
 
-		/*Les tables de stock riz et angrais*/
-
-		$req_riz = $bdd->prepare("INSERT INTO riz(ID_STOCK, ID_MAGASIN, DEPARTEMENT_STOCK) VALUES(:id_stock, :lastId , :magasin)");
-		$req_riz->execute(array('id_stock' => $lastId_stock,
-								'lastId' => $lastId_magasin,
-								'magasin' => $magasin));
-
-		/*$type[] = array("NPK15 15 15","UREE 46%N");*/
-		$type = "NPK15 15 15";
-		for ($i=0; $i=1 ; $i++) { 
-			$req_engrais = $bdd->prepare("INSERT INTO engrais(ID_STOCK, ID_MAGASIN, DEPARTEMENT_STOCK, TYPE_ENGRAIS) VALUES(:id_stock, :lastId , :magasin, :type)");
-				$req_engrais->execute(array('id_stock' => $lastId_stock,
-								'lastId' => $lastId_magasin,
-								'magasin' => $magasin,
-								'type' => $type));
-		}
+        $bdd->commit();
 		
 
 	}

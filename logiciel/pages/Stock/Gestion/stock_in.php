@@ -41,8 +41,8 @@
                 <label for="produit">*Selection du produit</label>
                 <select class="form-control" id="produit" name="produit">
                     
-                    <option value="engrais_type1" > Engrais type 1 </option>
-                    <option value="engrais_type2" > Engrais type 2 </option>
+                    <option value="NKP15 15 15" > NPK15 15 15 </option>
+                    <option value="UREE 46%N" > UREE 46%N </option>
                     <option value="riz" > riz  </option>
                 </select>
             </div>

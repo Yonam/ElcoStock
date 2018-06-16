@@ -29,7 +29,9 @@
                     
                     <option value="Maritime" > Maritime </option>
                     <option value="Plateaux" > Plateaux </option>
+                    <option value="Centrale" > Centrale </option>
                     <option value="Kara" > Kara  </option>
+                    <option value="Savane" > Savane </option>
                 </select>
             </div>
 

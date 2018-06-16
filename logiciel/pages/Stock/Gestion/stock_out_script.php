@@ -5,7 +5,6 @@ include "../../include/connexionDB.php";
 		
 		$magasin = isset($_POST['magasin']) ? $_POST['magasin'] : null;
 		$produit = isset($_POST['produit']) ? $_POST['produit'] : null;
-		$conso = isset($_POST['consommation']) ? $_POST['consommation'] : null;
 		$quantite = isset($_POST['quantite']) ? $_POST['quantite'] : null;
 
 		/*$id_stock = $bdd->prepare("SELECT ID_STOCK FROM stock WHERE ID_MAGASIN = :id_magasin AND PRODUIT = :produit");
@@ -34,13 +33,13 @@ include "../../include/connexionDB.php";
 
 			/*DEDUCTION DU RESTE ET CALCUL DU NOUVEAU STOCK*/
 		
-			$restant = (float)$stock-(float)$conso;
 
-			if ($restant < 0) {
-				echo '<body onload ="alert(\'Cette consommation n\'est pas possible pour ce stock\')">';
+			if ((float)$stock < (float)$quantite) {
+				echo '<body onload ="alert(\'Ce retrait n\'est pas possible pour ce stock\')">';
 			}else{
-				$new_stock = $restant + (float)$quantite;
+				$new_stock = (float)$stock-(float)$quantite;
 			}
+			
 			
 
 
@@ -56,16 +55,14 @@ include "../../include/connexionDB.php";
   
 		/*INSERTION D'UNE LIGNE POUR LE SUIVI*/
 
-		$suivi = $bdd->prepare("INSERT INTO suivi_stock(ID_MAGASIN, PRODUIT, STOCK_INIT, QTE_AJOUTE, QTE_CONSOME, STOCK_FINAL) VALUES (:id_magasin, :produit, :stock_init, :qte_ajoute, :qte_consomme, :stock_final)");
+		$suivi = $bdd->prepare("INSERT INTO suivi_actions(ID_MAGASIN, ID_USER, ACTION, QUANTITE) VALUES (:id_magasin, :user, :action, :quantite)");
 		$suivi->execute(array('id_magasin' => $magasin,
-							'produit' => $produit,
-							'stock_init' => (float)$stock,
-							'qte_ajoute' => (float)$quantite,
-							'qte_consomme' => (float)$conso,
-							'stock_final' => $new_stock));
+							'user' => "1",
+							'action' => "Retrait de stock",
+							'quantite' => (float)$quantite));
 		
 
-		echo '<body onload ="alert(\'le Stock de '.$produit.' a bien ete enregistre \')">';
-        echo '<meta http-equiv="refresh" content="0;URL=../../../index.php?page=stock_in">';
+		echo '<body onload ="alert(\'le retrait de '.$produit.' a bien ete enregistre \')">';
+        echo '<meta http-equiv="refresh" content="0;URL=../../../index.php?page=stock_out">';
 
 	}
