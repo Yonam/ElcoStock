@@ -1,7 +1,7 @@
     <div class="dashboard">
         
         <div class="chart dash">
-            Dans l'exemple qui suit, on montre comment utiliser une grille avec trois pistes en colonnes pour laquelle les nouvelles lignes créées mesureront au moins 100 pixels et auront au plus la taille automatique (définie par leur contenu). Les éléments sont placés sur la grille grâce aux numéros des lignes horizontales et verticales.
+           <img src="assets/img/chart-2.png">
         </div>
 
         <div class="topStore dash">

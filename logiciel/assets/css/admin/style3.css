@@ -188,9 +188,13 @@ a.article, a.article:hover {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
 }
 
 .dash {
     background-color: red;
+}
+
+.chart {
+    height: 30em;
+    overflow: hidden;
 }
