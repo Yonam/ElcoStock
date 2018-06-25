@@ -52,8 +52,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 
                                 /*Boucle de recuperation des magasins de la region*/
 
-                                $magasin = $bdd->prepare("SELECT ID_MAGASIN FROM magasin WHERE REGION = :region");
-                                $magasin->execute(array('region'=>$r->REGION));
+                                
 
                                 $stock_npk = $bdd->prepare("SELECT SUM(QTE_STOCK) AS NPK FROM stock S JOIN magasin M ON S.ID_MAGASIN = M.ID_MAGASIN WHERE M.REGION = :region AND S.PRODUIT = 'NKP15 15 15'");
                                 $stock_npk->execute(array('region' => $r->REGION));
@@ -78,6 +77,8 @@ if (isset($_SERVER['HTTP_REFERER'])) {
                                 /*Recuperation des elements du stocks*/
 
                                 ?> 
+
+
                                 
                                 <tr class="odd gradeA">
                                     <td><?= $r->REGION ?></td>
@@ -85,10 +86,17 @@ if (isset($_SERVER['HTTP_REFERER'])) {
                                     <td><?= $stock_npk ?></td>
                                     <td><?= $stock_uree ?></td>
                                     <td>
-                                        <a class="btn btn-primary" href="#">Details</a>
-                                        
+                                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Region<?= $r->REGION ?>">
+                                            Afficher les magasins
+                                        </button>
                                     </td>
+
                                 </tr>
+
+
+
+
+
                         <?php   }
                         ?> 
                         
@@ -96,6 +104,71 @@ if (isset($_SERVER['HTTP_REFERER'])) {
                 </table>
                 <!-- /.table-responsive -->
                 
+
+                <?php 
+
+                foreach ($Region as $r) { 
+
+                    $magasin = $bdd->prepare("SELECT ID_MAGASIN , DEPARTEMENT FROM magasin WHERE REGION = :region");
+                    $magasin->execute(array('region'=>$r->REGION));
+
+                    
+                    
+
+                    ?>
+                    
+                    <div id="Region<?= $r->REGION ?>" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                    <h4 class="modal-title">Liste des magasins de la region <?= $r->REGION ?></h4>
+
+                                </div>
+
+                                <div class="modal-body">
+                                    
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>Region</th>
+                                                <th>Magasins</th>
+                                                <th>Stock NPK</th>
+                                                <th>stock UREE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                            foreach ($magasin as $m) { ?>
+
+                                            <tr class="odd gradeA">
+                                                <td><?= $r->REGION ?></td>
+                                                <td><?= $m->DEPARTEMENT ?></td>
+                                                <td>NPK</td>
+                                                <td>UREE</td>
+                                            </tr>
+
+                                            <?php } ?>
+
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                <?php 
+                
+            } ?>
+
             </div>
             <!-- /.panel-body -->
         </div>

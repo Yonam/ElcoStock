@@ -182,3 +182,15 @@ a.article, a.article:hover {
     top: 0;
     right: 0;
 }
+
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.dash {
+    background-color: red;
+}
