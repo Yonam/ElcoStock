@@ -1,7 +1,7 @@
     <div class="dashboard">
         
         <div class="chart dash">
-           <img src="assets/img/chart-2.png">
+           <img src="assets/img/chart-2.png" style="height: 28em; width: auto;">
         </div>
 
         <div class="topStore dash">
